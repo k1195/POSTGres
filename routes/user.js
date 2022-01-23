@@ -1,6 +1,6 @@
 const express = require('express')
 const User = require('../model/usermodel')
-const Order = require('../model/userorder')
+const Order = require('../model/userOrder')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require('../keys')
