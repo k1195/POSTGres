@@ -4,27 +4,24 @@ const Sequelize = require('sequelize')
 
 const User = Conn.define('users', {
     // attributes
-        firstName: {
-    type: Sequelize.STRING,
-    allowNull: false
+    firstName: {
+        type: Sequelize.STRING,
+        allowNull: false
     },
     lastName: {
-    type: Sequelize.STRING
-    // allowNull defaults to true
+        type: Sequelize.STRING
+        // allowNull defaults to true
     },
-    uId:{
+    uId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey:true,
-        autoIncreement:true
+        primaryKey: true,
+        autoIncreement: true
     }
-    }, {
+}, {
     // options
-    });
+});
 
-    User.sync()
+User.sync()
 
-    module.exports = User
-
-
-
+module.exports = User
