@@ -8,6 +8,7 @@
     "nodemailer-smtp-transport": "^2.7.4",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "pug": "^3.0.2",
     "redis": "^4.0.2",
     "sequelize": "^6.13.0"
   }

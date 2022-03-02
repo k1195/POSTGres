@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title= title
+    style
+       include style.css
+  body
+
+//- <div class="card">
+//-   <img src="img_avatar.png" alt="Avatar" style="width:100%">
+//-   <div class="container">
+//-     <h4><b>John Doe</b></h4>
+//-     <p>Architect & Engineer</p>
+//-   </div>
+//- </div>
+
+mixin card(user, avatar = 'https://picsum.photos/200/300')
+  .card
+    img.card__image(src= avatar)
+    h4.card__title= user.firstName + "            " + user.lastName
+    h4.card__title= user.lastName
+
+ul.list
+   each val in user
+       +card(val, 'https://picsum.photos/200/300')

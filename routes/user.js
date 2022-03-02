@@ -8,7 +8,7 @@ const {
 } = require('../keys')
 
 const validate = require('../middleware/getValidated')
-const client = require('../middleware/redi')
+//const client = require('../middleware/redi')
 
 router.post('/newuser', async (req, res) => {
 
@@ -38,31 +38,42 @@ router.post('/newuser', async (req, res) => {
 router.get('/getall', async (req, res) => {
   try {
 
-    if (req.body.uId) {
-      const foo = (req.body.uId).toString()
-      console.log(foo)
-      const value = await client.get(foo);
-      console.log(value)
-      if (value) {
-        const val1 = JSON.parse(value)
-        res.status(200).json(val1)
-      } else {
-        const allUser = await User
-          .findOne({
-            where: {
-              uId: req.body.uId
-            },
+    if (req.query.uId) {
+     // const foo = (req.body.uId).toString()
+    //   console.log(foo)
+    //   const value = await client.get(foo);
+    //  console.log(value)
+    //   if (value) {
+    //     const val1 = JSON.parse(value)
+    //     res.status(200).json(val1)
+    //   } else {
+    //     const allUser = await User
+    //       .findOne({
+    //         where: {
+    //           uId: req.body.uId
+    //         },
+    //         raw: true,
+    //         nest: true
+    //       })
+    const allUser = await User
+          .findAll({
+            // {
+            // where: {
+            //   uId: req.query.uId
+            // },
             raw: true,
             nest: true
           })
-        res.status(200).json(allUser)
-        const key = (allUser.uId).toString()
-        const val = JSON.stringify(allUser)
-        console.log(key, value)
-        client.set(key, val)
-        // client.set(req.body.uId , req.body.name)
+          console.log(allUser)
+        //res.status(200).json(allUser)
+        res.render('index', { title: 'Hey', user: allUser })
+        // const key = (allUser.uId).toString()
+        // const val = JSON.stringify(allUser)
+        // console.log(key, value)
+ //       client.set(key, val)
+        //client.set(req.body.uId , req.body.name)
       }
-    }
+    //}
   } catch (error) {
     res.status(500)
     console.log(error)
