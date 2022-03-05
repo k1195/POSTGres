@@ -8,7 +8,7 @@ const {
 } = require('../keys')
 
 const validate = require('../middleware/getValidated')
-//const client = require('../middleware/redi')
+//const clisent = require('../middleware/redi')
 
 router.post('/newuser', async (req, res) => {
 
